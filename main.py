@@ -1,6 +1,7 @@
 from collections import Counter
 import numpy as np
-#111
+import math
+
 
 class Solution(object):
     def longestCommonPrefix(self, strs):
@@ -117,10 +118,11 @@ class Solution(object):
 ss = Solution()
 
 # .........................data..............................
-word1 = "a"
-word2 = "a"
+n = 3
+m = 12
 # .........................main..............................
 if __name__ == '__main__':
-
+    ans = math.factorial(n)
+    (i,x) = divmod(m,10)
 
 
