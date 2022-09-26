@@ -97,7 +97,7 @@ class Solution(object):
         new = " ".join((new))
         return (new)
 
-    def rotate(self, matrix):
+    def rotate1(self, matrix):
         n = len(matrix)
         for i in range(n):
             for j in range(i, n):
@@ -114,15 +114,54 @@ class Solution(object):
         list2 = list(word2)
         return(list(set(list1).intersection(set(list2))))
 
+    def trailingZeroes(self, n) :
+        # count = 0
+        # ans = math.factorial(n)
+        # m = ans
+        # while ans >= 10:
+        #     i, x = divmod(m, 10)
+        #     if x == 0:
+        #         count += 1
+        #         m = i
+        #     else:
+        #         break
+        # return (count)
+        x = 5
+        res = 0
+        while x <= n:
+            res += n // x
+            x *= 5
+        return res
+
+    def minSubsequence(self, nums) :
+        nums.sort()
+        res = []
+        while sum(res) <= sum(nums):
+            res.append(nums.pop())
+        return res
+
+    def maxDistance(self, colors):
+        i, j = 0, len(colors) - 1
+        while colors[0] == colors[j]:
+            j -= 1
+        while colors[-1] == colors[i]:
+            i += 1
+        return (max(j, len(colors) - 1 - i))
+
+    def numDecodings(self, s):
+        pre_way, now_way, digit = 0, int(s > ""), ""
+        for load in s:
+            pre_way, now_way, digit = now_way, (10 <= int(digit + load) <= 26) * pre_way + int(
+                load != "0") * now_way, load
+        return (now_way)
 # ...........................................................
 ss = Solution()
 
 # .........................data..............................
-n = 3
-m = 12
+s = "222022"
 # .........................main..............................
 if __name__ == '__main__':
-    ans = math.factorial(n)
-    (i,x) = divmod(m,10)
-1111
+
+
+
 
