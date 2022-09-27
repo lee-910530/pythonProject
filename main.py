@@ -154,14 +154,58 @@ class Solution(object):
             pre_way, now_way, digit = now_way, (10 <= int(digit + load) <= 26) * pre_way + int(
                 load != "0") * now_way, load
         return (now_way)
+
+    def containsDuplicate(self, nums) :
+        set_nums = list(set(nums))
+        if len(set_nums) < len(nums) :
+            return True
+        else :
+            return False
+
+    def maxSubArray(self, nums) :
+        for i in range(1, len(nums)):
+            if nums[i - 1] >= 0:
+                nums[i] += nums[i - 1]
+        return (max(nums))
+
+    def fib(self, n) :
+        a,b = 0,1
+        for i in range(n):
+            a,b = b,a + b
+        return a
+
+    def tribonacci(self, n) :
+        if n == 0:
+            return 0
+        elif n < 3:
+            return 1
+        a, b, c = 0, 1, 1
+        for i in range(3,n+1):
+            a, b, c = b, c, a + b + c
+        return c
+
+    def runningSum(self, nums) :
+        ans = []
+        temp = 0
+        for i in range(len(nums)):
+            temp = temp + nums[i]
+            ans.append(temp)
+        return (ans)
+
+    def pivotIndex(self, nums) :
+        for i in range(len(nums)):
+            if sum(nums[0:i]) == sum(nums[i + 1::]):
+                return i
+
+        return -1
 # ...........................................................
 ss = Solution()
 
 # .........................data..............................
-s = "222022"
+nums = [2,1,-1]
 # .........................main..............................
 if __name__ == '__main__':
 
-
+    print(ss.pivotIndex(nums))
 
 
