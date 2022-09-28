@@ -196,16 +196,39 @@ class Solution(object):
         for i in range(len(nums)):
             if sum(nums[0:i]) == sum(nums[i + 1::]):
                 return i
-
         return -1
+
+    def average(self, salary) :
+        salary.sort()
+        salary.pop(0)
+        salary.pop()
+        return sum(salary) / len(salary)
+
+    def merge(self, nums1, m, nums2, n) :
+        nums1[m:] = nums2[:n]
+        nums1.sort()
+
+    def isPowerOfTwo(self, n) :
+        return (n > 0 and not (n & n - 1))
+
+
 # ...........................................................
 ss = Solution()
 
 # .........................data..............................
-nums = [2,1,-1]
+arr = [1,5,7,8,5,3,4,2,1]; difference = -2
 # .........................main..............................
 if __name__ == '__main__':
+    list(set(arr.sort()))
+    difference = abs(difference)
+    now,maxx,count = arr[0],0,0
+    arr.pop(0)
 
-    print(ss.pivotIndex(nums))
-
-
+    for i in arr:
+        now += difference
+        if now == i :
+            count += 1
+        else :
+            count = 0
+        maxx = max(maxx,count)
+    print(maxx)
