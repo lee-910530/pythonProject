@@ -1,4 +1,5 @@
 from collections import Counter
+
 import numpy as np
 import math
 
@@ -211,24 +212,35 @@ class Solution(object):
     def isPowerOfTwo(self, n) :
         return (n > 0 and not (n & n - 1))
 
+    def intersect(self, nums1, nums2) :
+        a, b = Counter(nums1), Counter(nums2)
+        return (list((a & b).elements()))
 
+    def maxProfit(self, prices) :
+        buy_in, profit = float("inf"), 0
+        for p in prices:
+            if p < buy_in:
+                buy_in = p
+            if p - buy_in > profit:
+                profit = p - buy_in
+        return (profit)
+
+    def matrixReshape(self, nums, r, c):
+        try:
+            x = np.array(nums)
+            return x.reshape(r, c).tolist()
+        except:
+            return nums
 # ...........................................................
 ss = Solution()
 
 # .........................data..............................
-arr = [1,5,7,8,5,3,4,2,1]; difference = -2
+numRows = 5
 # .........................main..............................
 if __name__ == '__main__':
-    list(set(arr.sort()))
-    difference = abs(difference)
-    now,maxx,count = arr[0],0,0
-    arr.pop(0)
 
-    for i in arr:
-        now += difference
-        if now == i :
-            count += 1
-        else :
-            count = 0
-        maxx = max(maxx,count)
-    print(maxx)
+
+
+
+
+    print(listx)
