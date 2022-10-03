@@ -47,7 +47,7 @@ class Solution(object):
         numset = set(nums)
         for i in numset:
             dic[i] = 0
-            print(dic)
+            return(dic)
         for i in nums:
             dic[i] += 1
         for i in numset:
@@ -59,7 +59,7 @@ class Solution(object):
         r = len(nums)
         while (l < r):
             m = l + (r - l) // 2
-            # print(m)
+            # return(m)
             if (nums[m] == target):
                 return m
             elif (nums[m] < target):
@@ -231,16 +231,91 @@ class Solution(object):
             return x.reshape(r, c).tolist()
         except:
             return nums
+
+    def searchMatrix(self, matrix, target) :
+        new = (np.array(matrix).reshape(-1)).tolist()
+        try:
+            if new.index(target) >= 0:
+                return True
+        except:
+            return False
+
+    def firstUniqChar(self, s) :
+        x = Counter(list(s))
+        for i in (x):
+            if x[i] == 1:
+                return (s.index(i))
+        return -1
+
+    def isAnagram(self, s, t) :
+        x, y = Counter(s), Counter(t)
+        return (x == y)
+
+    def subtractProductAndSum(self, n) :
+        # x = list(str(n))
+        # product, sum = 1, 0
+        # for i in range(len(x)):
+        #     product *= int(x[i])
+        #     sum += int(x[i])
+        # return (product - sum)
+
+        a = [int(x) for x in str(n)]
+        return np.prod(a) - np.sum(a)
+
+    def nearestValidPoint(self, x, y, points) :
+        tar, min = [], float("inf")
+        for i in range(len(points)):
+            if points[i][0] == x:
+                tar.append(sum(points[i]))
+            if points[i][1] == y:
+                tar.append(sum(points[i]))
+        tar.sort()
+        for i in range(1, len(tar)):
+            if tar[i] - tar[i - 1] < min:
+                min = tar[i] - tar[i - 1]
+        if min == float("inf"): min = -1
+        return (min)
+
+    def arraySign(self, nums) :
+        x = np.array([nums])
+        return (1 if np.prod(x) > 0 else -1 if np.prod(x) < 0 else 0)
+
+    def areAlmostEqual(self, s1, s2) :
+        change = 2
+        x, y = [ord(i) for i in s1], [ord(i) for i in s2]
+        if sorted(x) == sorted(y):
+            for i in range(len(x)):
+                if x[i] != y[i]: change -= 1
+
+            return (change >= 0)
+        return False
 # ...........................................................
 ss = Solution()
 
 # .........................data..............................
-numRows = 5
-# .........................main..............................
+s1 = "bank"; s2 = "kanb"
+# .1........................main..............................
 if __name__ == '__main__':
+    change = 3
+    x,y = [ord(i) for i in s1],[ord(i) for i in s2]
+    if sorted(x) == sorted(y) :
+        for i in range(len(x)):
+            if x[i] != y[i]:
+                change -= 1
+
+
+        print(change >= 1)
 
 
 
 
 
-    print(listx)
+
+
+
+
+
+
+
+
+
