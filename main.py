@@ -2,7 +2,12 @@ from collections import Counter
 
 import numpy as np
 import math
-
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 class Solution(object):
     def longestCommonPrefix(self, strs):
@@ -289,26 +294,79 @@ class Solution(object):
 
             return (change >= 0)
         return False
+
+    def uncommonFromSentences(self, s1, s2) :
+        x = s1.split(" ") + s2.split(" ")
+        y = Counter(x)
+        ans = []
+        for i, k in y.items():
+            if k == 1:
+                ans.append(i)
+        return (ans)
+
+    def constructMaximumBinaryTree(self, nums):
+        def construct(l, r):
+            if l > r:
+                return
+            elif l == r:
+                return TreeNode(nums[l])
+            maximum = -float('inf')
+            for i in range(l, r + 1):
+                if maximum < nums[i]:
+                    maximum = nums[i]
+                    max_index = i
+            left = construct(l, max_index - 1)
+            right = construct(max_index + 1, r)
+            root = TreeNode(maximum)
+            root.left = left
+            root.right = right
+            return root
+        return construct(0, len(nums) - 1)
+
+    def arithmeticTriplets(self, nums, diff) :
+        cnt = 0
+        for x in nums:
+            if (x + diff) in nums and (x + 2 * diff) in nums:
+                cnt = cnt + 1
+        return (cnt)
+
+    def isHappy(self, n) :
+        num = set()
+        while n != 1:
+            n = sum(int(i) ** 2 for i in str(n))
+            if n in num:
+                return False
+            else:
+                num.add(n)
+        else:
+            return True
+
+    def diagonalSum(self, mat) :
+        sum = 0
+        long = len(mat)
+        if long % 2 == 0:
+            for i in range(long):
+                sum += (mat[i][i] + mat[i][long - 1 - i])
+            return (sum)
+        else:
+            for i in range(long):
+                sum += (mat[i][i] + mat[i][long - 1 - i])
+            sum -= mat[long // 2][long // 2]
+            return (sum)
 # ...........................................................
 ss = Solution()
 
 # .........................data..............................
-s1 = "bank"; s2 = "kanb"
+
+
 # .1........................main..............................
 if __name__ == '__main__':
-    change = 3
-    x,y = [ord(i) for i in s1],[ord(i) for i in s2]
-    if sorted(x) == sorted(y) :
-        for i in range(len(x)):
-            if x[i] != y[i]:
-                change -= 1
 
-
-        print(change >= 1)
-
-
-
-
+    else :
+        for i in range(long):
+            sum += (mat[i][i] + mat[i][long-1-i])
+        sum -= mat[long//2][long//2]
+        print(sum)
 
 
 
