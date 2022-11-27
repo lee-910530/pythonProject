@@ -353,21 +353,33 @@ class Solution(object):
                 sum += (mat[i][i] + mat[i][long - 1 - i])
             sum -= mat[long // 2][long // 2]
             return (sum)
+
+    def findNumbers(self, nums) :
+        cnt = 0
+        for i in nums:
+            cnt += 1 - len(str(i)) % 2
+        return (cnt)
+
+    def carPooling(self, trips, capacity) :
+        process = [];man = 0
+        for num, start, end in trips:
+            process.append((start, num))
+            process.append((end, -num))
+        process.sort()
+
+        for i in process:
+            man += i[1]
+            if man > capacity:
+                return 0
+        return 1
+
 # ...........................................................
 ss = Solution()
 
 # .........................data..............................
-
-
-# .1........................main..............................
+trips = [[2,1,5],[3,3,7]]; capacity = 4
+# .........................main..............................
 if __name__ == '__main__':
-
-    else :
-        for i in range(long):
-            sum += (mat[i][i] + mat[i][long-1-i])
-        sum -= mat[long//2][long//2]
-        print(sum)
-
 
 
 
