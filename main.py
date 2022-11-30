@@ -373,15 +373,33 @@ class Solution(object):
                 return 0
         return 1
 
-# ...........................................................
+    def maxDepth(self, s) :
+        cnt, num = 0, 0
+        for i in range(len(s)):
+            if s[i] == "(":
+                cnt += 1
+                num = max(cnt, num)
+            elif s[i] == ")":
+                cnt -= 1
+        return (num)
+
+
+
+    # ...........................................................
 ss = Solution()
 
 # .........................data..............................
-trips = [[2,1,5],[3,3,7]]; capacity = 4
+s = "(1+(2*3)+((8)/4))+1"
 # .........................main..............................
 if __name__ == '__main__':
-
-
+    cnt ,num = 0 ,0
+    for i in range(len(s)) :
+        if s[i] == "(":
+            cnt += 1
+            num = max(cnt ,num)
+        elif s[i] == ")" :
+            cnt -= 1
+    return(num)
 
 
 
